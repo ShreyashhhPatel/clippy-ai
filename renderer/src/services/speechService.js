@@ -202,7 +202,7 @@ export function startListening(options = {}) {
 
     // Start recognition
     try {
-      recognition.start();
+    recognition.start();
     } catch (error) {
       isRecognitionActive = false;
       recognition = null;
@@ -215,7 +215,7 @@ export function stopListening() {
   if (recognition) {
     console.log('🎤 Stopping speech recognition...');
     try {
-      recognition.stop();
+    recognition.stop();
     } catch (error) {
       console.error('Error stopping recognition:', error);
     }

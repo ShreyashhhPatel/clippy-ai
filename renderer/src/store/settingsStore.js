@@ -2,7 +2,7 @@ import { create } from 'zustand';
 
 const DEFAULT_SETTINGS = {
   provider: 'local', // 'local' (Ollama) or 'gemini'
-  ollamaModel: 'llama3',
+  ollamaModel: 'mistral:latest',
   geminiModel: 'gemini-2.0-flash',
   geminiApiKey: '',         // Gemini API key (stored in app, fallback to .env)
   style: 'default',

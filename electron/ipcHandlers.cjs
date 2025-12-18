@@ -56,13 +56,13 @@ ipcMain.handle("ollama-chat", async (_, { messages, style, model }) => {
   
   try {
     const response = await makeRequest(
-      'http://localhost:11434/api/chat',
+      'http://127.0.0.1:11434/api/chat',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       },
       {
-        model: model || 'llama3',
+        model: model || 'mistral:latest',
         messages: [
           { role: 'system', content: systemPrompt },
           ...messages.map(m => ({
@@ -90,7 +90,7 @@ ipcMain.handle("ollama-chat", async (_, { messages, style, model }) => {
 ipcMain.handle("ollama-status", async () => {
   try {
     const response = await makeRequest(
-      'http://localhost:11434/api/tags',
+      'http://127.0.0.1:11434/api/tags',
       { method: 'GET' }
     );
     return { running: true, models: response.data?.models || [] };
@@ -210,7 +210,7 @@ ipcMain.on("window-close", (event) => {
 ipcMain.handle("get-settings", () => {
   return store.get("settings", {
     provider: "local",
-    ollamaModel: "llama3",
+    ollamaModel: "mistral:latest",
     geminiModel: "gemini-2.0-flash",
     style: "default",
     soundEnabled: true,

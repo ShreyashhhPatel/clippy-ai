@@ -1,7 +1,7 @@
 // LLM Service - Uses IPC to main process for API calls (avoids CORS issues)
 
 // Ollama API (Local) - via main process
-async function askOllama(messages, style = 'default', model = 'llama3') {
+async function askOllama(messages, style = 'default', model = 'mistral:latest') {
   const result = await window.clippy?.ollamaChat({
     messages,
     style,
@@ -19,16 +19,16 @@ async function askGemini(messages, style = 'default', model = 'gemini-1.5-flash'
   // If running in Electron, use IPC
   if (window.clippy?.geminiChat) {
     const result = await window.clippy.geminiChat({
-      messages,
-      style,
+    messages,
+    style,
       model,
       apiKey
-    });
-    
-    if (result?.success) {
-      return result.content;
-    }
-    throw new Error(result?.error || 'Gemini request failed');
+  });
+  
+  if (result?.success) {
+    return result.content;
+  }
+  throw new Error(result?.error || 'Gemini request failed');
   }
   
   // If running in browser, make direct API call
@@ -93,13 +93,13 @@ export async function askLLM(messages, style = 'default', settings = {}) {
 
   switch (provider) {
     case 'local':
-      return askOllama(messages, style, settings.ollamaModel || 'llama3');
+      return askOllama(messages, style, settings.ollamaModel || 'mistral:latest');
     
     case 'gemini':
       return askGemini(messages, style, settings.geminiModel || 'gemini-2.0-flash', settings.geminiApiKey);
     
     default:
-      return askOllama(messages, style, settings.ollamaModel || 'llama3');
+      return askOllama(messages, style, settings.ollamaModel || 'mistral:latest');
   }
 }
 

@@ -86,7 +86,7 @@ function CommandBar() {
       } else if (useWhisper) {
         stopWhisperListening();
       } else {
-        stopListening();
+      stopListening();
       }
       setIsRecording(false);
       return;
@@ -177,7 +177,7 @@ function CommandBar() {
             setInput(''); // Keep empty
           },
           
-          onInterim: (text) => {
+        onInterim: (text) => {
             // Keep input empty during recording - user doesn't want text shown
             // setInput(text);
           },
@@ -188,8 +188,8 @@ function CommandBar() {
           
           onEnd: (finalText) => {
             console.log('🎤 Recording ended, final text:', finalText);
-          }
-        });
+        }
+      });
       }
       
       setIsRecording(false);
@@ -199,7 +199,7 @@ function CommandBar() {
         
         // Auto-submit after voice input (if enabled in settings)
         if (settings.autoSubmitVoice !== false) {
-          setTimeout(() => {
+        setTimeout(() => {
             if (inputRef.current?.form) {
               inputRef.current.form.requestSubmit();
             }

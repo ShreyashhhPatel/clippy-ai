@@ -142,13 +142,13 @@ function Settings({ onClose }) {
           <label className="text-xs font-medium text-clippy-muted uppercase tracking-wide">
             Gemini API Key
           </label>
-          <input
+              <input
             type="password"
             value={settings.geminiApiKey || ''}
             onChange={(e) => updateSettings({ geminiApiKey: e.target.value })}
             placeholder="Enter your Gemini API key"
             className="w-full px-3 py-2 bg-clippy-surface border border-clippy-border rounded-lg text-sm text-clippy-text placeholder-clippy-muted focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-          />
+              />
           <p className="text-[10px] text-clippy-muted">
             Get your free API key from{' '}
             <a
