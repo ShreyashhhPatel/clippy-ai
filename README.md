@@ -43,7 +43,7 @@ A modern, floating AI desktop assistant powered by OpenAI. Clippy is back, and t
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/clippy-ai.git
+git clone https://github.com/ShreyashhhPatel/clippy-ai.git
 cd clippy-ai
 
 # Install dependencies
