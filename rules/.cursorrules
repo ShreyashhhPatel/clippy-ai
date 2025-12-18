@@ -1,0 +1,95 @@
+# Clippy AI - Cursor Rules
+
+## Project Context
+Clippy AI is a floating Electron + React desktop AI assistant with local-first privacy.
+
+## Core Principles
+- Security: contextIsolation=true, nodeIntegration=false
+- Privacy: Local Ollama default, cloud Gemini optional
+- Architecture: Main process for OS, renderer for UI only
+- No secrets in code: API keys in .env only
+
+## File Structure
+```
+electron/          # Main process (Node.js)
+  ├── main.cjs     # Window, tray, shortcuts
+  ├── preload.cjs  # Secure IPC bridge
+  └── ipcHandlers.cjs # API handlers
+
+renderer/src/      # Renderer (React)
+  ├── components/  # UI components
+  ├── services/    # Business logic
+  └── store/       # Zustand state
+```
+
+## Security Rules (CRITICAL)
+- All file/clipboard/shell ops in main process ONLY
+- Never expose API keys to renderer
+- IPC via preload bridge only, no `remote` module
+- .env for secrets, never commit keys
+
+## AI Provider Rules
+- Ollama: Default, local, no network
+- Gemini: Opt-in, cloud, API key required
+- Swappable via llmService abstraction
+
+## Command Safety
+- Allowed: math, open URLs, clipboard ops
+- Disallowed: arbitrary shell, file deletion
+- All commands parsed in commandParser.js
+
+## UI/UX Rules
+- Always-on-top floating window
+- Cmd/Ctrl+Shift+Space global shortcut
+- Animations <300ms
+- Keyboard-first
+- Microphone: Browser only, NOT in Electron
+
+## State Management
+- Zustand for global state
+- Persist: provider, model, style, window position
+- Don't persist: API responses, clipboard
+
+## Error Handling
+- Never crash the app
+- Friendly UI errors, technical logs to console
+- Graceful degradation (Ollama down → show hint)
+
+## Code Style
+- camelCase: variables
+- PascalCase: React components
+- kebab-case: file names
+- One responsibility per file
+- No business logic in components
+
+## Demo Safety
+- Global shortcut must work
+- Ollama running before demo
+- DevTools closed
+- No debug logs visible
+
+## Quick Commands
+```bash
+npm run dev      # Start development
+pkill -9 -f electron # Kill app
+```
+
+## When Editing Code
+1. Check if operation needs main process (file/shell/clipboard)
+2. Verify no secrets exposed
+3. Test global shortcut after changes
+4. Ensure error handling exists
+
+## Red Flags to Avoid
+❌ API keys in code
+❌ Node.js in renderer
+❌ Arbitrary shell execution
+❌ Blocking animations
+❌ Missing error handling
+
+## Remember
+- Security > convenience
+- Local-first > cloud
+- Keyboard > mouse
+- Privacy > features
+

@@ -1,0 +1,56 @@
+# 🚀 GitHub Setup Commands - Copy & Paste
+
+## ✅ Already Done:
+- Git initialized ✓
+- Branch renamed to 'main' ✓
+- .gitignore updated ✓
+
+## 📝 Step 3: Configure Git (First Time Only)
+
+# Set your name
+git config user.name "Your Name"
+
+# Set your email (use your GitHub email)
+git config user.email "your.email@example.com"
+
+## 📦 Step 4: Add All Files
+
+git add .
+
+## 🎯 Step 5: Create Initial Commit
+
+git commit -m "feat: Initial commit - Clippy AI desktop assistant
+
+- Electron + React desktop application
+- Multiple AI provider support (Ollama, Gemini)
+- Floating widget with global shortcut
+- Quick commands and chat interface
+- Comprehensive project rules and guidelines
+- MIT License"
+
+## 🌐 Step 6: Create GitHub Repository
+
+1. Go to: https://github.com/new
+
+2. Fill in:
+   - Repository name: clippy-ai
+   - Description: A modern, floating AI desktop assistant built with Electron and React
+   - Visibility: Public
+   - ❌ DO NOT initialize with README, .gitignore, or license
+
+3. Click "Create repository"
+
+## 🔗 Step 7: Connect to GitHub
+
+# Replace YOUR_USERNAME with your actual GitHub username
+git remote add origin https://github.com/YOUR_USERNAME/clippy-ai.git
+
+## 🚀 Step 8: Push to GitHub
+
+git push -u origin main
+
+## ✅ Done!
+
+Visit your repository at:
+https://github.com/YOUR_USERNAME/clippy-ai
+

@@ -1,0 +1,130 @@
+[tools]
+node = "20"
+
+[env]
+NODE_ENV = "development"
+ELECTRON_DISABLE_SECURITY_WARNINGS = "true"
+
+# ═══════════════════════════════════════════════════════════════
+# 🚀 TASKS - Run with: mise run <task>
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.install]
+description = "Install all dependencies"
+run = "npm install"
+
+[tasks.dev]
+description = "Start development server"
+depends = ["install"]
+run = "npm run dev"
+
+[tasks.build]
+description = "Build for production"
+run = "npm run build"
+
+[tasks.dist]
+description = "Build distributable package"
+run = "npm run dist"
+
+[tasks.dist-mac]
+description = "Build macOS distributable"
+run = "npm run dist:mac"
+
+# ═══════════════════════════════════════════════════════════════
+# 🎨 CODE QUALITY
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.format]
+description = "Format all code with Prettier"
+run = "npx prettier --write 'renderer/src/**/*.{js,jsx,ts,tsx,css,json}' 'electron/**/*.{js,cjs}'"
+
+[tasks.format-check]
+description = "Check code formatting"
+run = "npx prettier --check 'renderer/src/**/*.{js,jsx,ts,tsx,css,json}' 'electron/**/*.{js,cjs}'"
+
+[tasks.lint]
+description = "Lint code with ESLint"
+run = "npx eslint 'renderer/src/**/*.{js,jsx}' --fix"
+
+[tasks.lint-check]
+description = "Check for lint errors"
+run = "npx eslint 'renderer/src/**/*.{js,jsx}'"
+
+[tasks.check]
+description = "Run all checks (format + lint)"
+run = "npm run format-check && npm run lint-check"
+
+# ═══════════════════════════════════════════════════════════════
+# 🧹 MAINTENANCE
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.clean]
+description = "Clean build artifacts"
+run = "rm -rf dist release node_modules/.cache && echo '✅ Cleaned build artifacts'"
+
+[tasks.clean-all]
+description = "Full clean including node_modules"
+run = "rm -rf dist release node_modules && echo '✅ Full clean complete'"
+
+[tasks.reset]
+description = "Reset app settings and chat history"
+run = "rm -rf ~/Library/Application\\ Support/clippy-ai && echo '✅ App settings cleared'"
+
+# ═══════════════════════════════════════════════════════════════
+# 📦 DEPENDENCIES
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.deps-update]
+description = "Update all dependencies"
+run = "npm update"
+
+[tasks.deps-audit]
+description = "Audit dependencies for security issues"
+run = "npm audit"
+
+[tasks.deps-outdated]
+description = "Check for outdated dependencies"
+run = "npm outdated || true"
+
+# ═══════════════════════════════════════════════════════════════
+# 🔧 CODEGEN & SCAFFOLDING
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.new-component]
+description = "Create a new React component"
+run = "node scripts/new-component.js"
+
+[tasks.new-store]
+description = "Create a new Zustand store"
+run = "node scripts/new-store.js"
+
+[tasks.new-service]
+description = "Create a new service"
+run = "node scripts/new-service.js"
+
+# ═══════════════════════════════════════════════════════════════
+# 🧪 TESTING & DEBUGGING
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.test-ollama]
+description = "Test Ollama connection"
+run = "curl -s http://localhost:11434/api/tags && echo '' || echo 'Ollama not running'"
+
+[tasks.test-gemini]
+description = "Test Gemini API connection"
+run = "node scripts/test-gemini.js"
+
+# ═══════════════════════════════════════════════════════════════
+# 📋 INFO & HELP
+# ═══════════════════════════════════════════════════════════════
+
+[tasks.info]
+description = "Show project info"
+run = "node scripts/info.js"
+
+# ═══════════════════════════════════════════════════════════════
+# 🪝 HOOKS - Auto-run on directory enter
+# ═══════════════════════════════════════════════════════════════
+
+[hooks.enter]
+run = "test -d node_modules || npm install"

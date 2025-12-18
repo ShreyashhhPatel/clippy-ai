@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+release/
+
+# Environment
+.env
+.env.local
+.env.*.local
+.mise.local.toml
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor directories
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Electron
+*.dmg
+*.AppImage
+*.exe
+*.deb
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Documentation and setup files (temporary/local only)
+API_KEYS_ENV_QUICKSTART.md
+CONVERT_TO_PDF.md
+convert-to-pdf.sh
+ENV_MIGRATION_SUMMARY.md
+ENV_SETUP_GUIDE.md
+HOW_TO_CHECK_LOGS.md
+OPENAI_WHISPER_INTEGRATION_SUMMARY.md
+OPENAI_WHISPER_SETUP.md
+QUICK_REFERENCE.md
+README_RECORDING_DOCS.md
+SCREEN_RECORDING_GUIDE.md
+SECURITY_AUDIT_REPORT.md
+SPEECH_TO_TEXT_GUIDE.md
+CLEANUP_SUMMARY.md
+GITIGNORE_SUMMARY.md
+GITHUB_SETUP_GUIDE.md
+ORGANIZATION_COMPLETE.md
+QUICK_GITHUB_SETUP.sh
+clippy.txt
+
+# Generated PDFs
+*.pdf
+Clippy_AI_*.pdf
+
